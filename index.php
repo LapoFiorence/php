@@ -1,7 +1,8 @@
 <?php
 
-//echo 'front controller';
-//echo 'your request: '.$_SERVER['REQUEST_URI'];
+// Format: dd-mm-yyyy
+$srring = '21-11-2019';
+
 
 // FRONT CONTROLLER
 
