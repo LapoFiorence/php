@@ -17,11 +17,11 @@ class Router {
 
     public function run()
     {     
-//        print_r($this->routes);
-//        echo 'Class Router, method run';
-        // Получить строку запроса
+//         Получить строку запроса
         $uri = $this->getURI();
-//        echo $uri;
+        
+        
+        
         // Проверить наличие такого запроса в routes.php
         foreach ($this->routes as $uriPattern => $path){// для каждого маршрута, находящегося в массиве помещаем в переменную $uriPattern строку запроса из routes.php, а в переменную $path мы помещаем путь 'news/index'
 //            echo "<br>$uriPattern -> $path"; //обязательны двойные кавычки
@@ -29,19 +29,35 @@ class Router {
             // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)){
                 
-                // Определить какой контроллер и action обрабатывают запрос
-                $segments = explode('/', $path); // explode делит строку на две части
+                echo '<br>Где ищем (запрос, который набрал пользователь): '.$uri;
+                echo '<br>Что ищем (совпадение из правила): '.$uriPattern;
+                echo '<br>Кто обрабатывает: '.$path;
+//                
+                //Получаем внутренний путь из внешнего согласно правилу.
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri); // в строке запроса мы ищем параметры $path и $uri по определенному шаблону $uriPattern
                 
-//                echo '<pre>';
-//                print_r($segments);
-//                echo '</pre>';
+                echo '<br><br>Нужно сформировать: '.$internalRoute;
+                
+                
+                // Определить какой контроллер и action обрабатывают запрос
+                $segments = explode('/', $internalRoute); // explode делит строку на две части
+                                
                 $controllerName = array_shift($segments).'Controller'; // получение имени контроллера
                 $controllerName = ucfirst($controllerName);
+//                echo $controllerName;
                 
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 
+                                
+                echo '<br>controller name: '.$controllerName;
+                echo '<br>action name: '.$actionName;
+                $parameters = $segments;
+                
+                
+//                die;
+                
                 //Подключить файл класса-контроллера
-                $controllerFile = ROOT . '/controllers/' .// перенос
+                $controllerFile = ROOT . '/controller/' .// перенос
                         $controllerName . '.php';
                 
                 if (file_exists($controllerFile)){
@@ -50,7 +66,7 @@ class Router {
                 
                 //Создать объект, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName;
-                $result = $controllerObject->$actionName();
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
                 if ($result != null){
                     break;
                 }
