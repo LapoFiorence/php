@@ -6,12 +6,20 @@ class NewsController
 {
     public function actionIndex()
     {
-        echo 'Список новостей';
+        $newsList = array();
+        $newsList = News::getNewsList(); // статический метод
+        
+        echo '<pre>';
+        print_r($newsList);
+        echo '</pre>';
+        
+        return true;
     }
     
-    public function actionView()
+    public function actionView($category, $id)
     {
-        echo 'Просмотр одной новости';
+        echo '<br>'.$category;
+        echo '<br>'.$id;
         
         return true;
     }
