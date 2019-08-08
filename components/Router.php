@@ -5,7 +5,7 @@ class Router {
     public function __construct()
     {
         $routesPath= ROOT.'/config/routes.php'; // указываем путь к роутам
-        $this->routes = include($routesPath); // присваиваем свойству routes массив
+        $this->routes = include($routesPath); // присваиваем свойству routes массив, который хранится в файле routes.php
     }
     
     private function getURI()//метод возвращает строку
@@ -15,12 +15,12 @@ class Router {
     }
     }
 
-    public function run()
+    public function run()// отвечает за анализ запроса и передачу управления
     {     
 //         Получить строку запроса
         $uri = $this->getURI();
-        
-        
+        echo $uri;
+//        print_r($this->routes);//проверка
         
         // Проверить наличие такого запроса в routes.php
         foreach ($this->routes as $uriPattern => $path){// для каждого маршрута, находящегося в массиве помещаем в переменную $uriPattern строку запроса из routes.php, а в переменную $path мы помещаем путь 'news/index'
@@ -40,9 +40,13 @@ class Router {
                 
                 
                 // Определить какой контроллер и action обрабатывают запрос
-                $segments = explode('/', $internalRoute); // explode делит строку на две части
-                                
-                $controllerName = array_shift($segments).'Controller'; // получение имени контроллера
+                $segments = explode('/', $path); // explode делит строку на две части
+                echo '<pre>';
+                print_r($segments);
+                echo '</pre>';
+                
+                $controllerName = array_shift($segments).'Controller'; // получение имени контроллера, функция array_shift получает значение первого элемента в массиве и удаляет его из массива
+//                echo $controllerName;
                 $controllerName = ucfirst($controllerName);
 //                echo $controllerName;
                 
@@ -57,15 +61,14 @@ class Router {
 //                die;
                 
                 //Подключить файл класса-контроллера
-                $controllerFile = ROOT . '/controller/' .// перенос
-                        $controllerName . '.php';
+                $controllerFile = ROOT . '/controllers/' . $controllerName . '.php'; 
                 
                 if (file_exists($controllerFile)){
                     include_once ($controllerFile);
                 }
                 
-                //Создать объект, вызвать метод (т.е. action)
-                $controllerObject = new $controllerName;
+                //Создать объект класса контроллера, вызвать метод (т.е. action)
+                $controllerObject = new $controllerName; // вместо имени класса подставляем переменную $controllerName, которая содержит строку с именем этого класса
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
                 if ($result != null){
                     break;

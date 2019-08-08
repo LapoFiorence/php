@@ -6,17 +6,10 @@ class NewsController
 {
     public function actionIndex()
     {
-        $newsList = array();
-        $newsList = News::getNewsList();
-        
-        echo '<pre>';
-        print_r($newsList);
-        echo '</pre>';
-        
-        return true;
+        echo 'Список новостей';
     }
     
-    public function actionView($category,$id)
+    public function actionView()
     {
         echo 'Просмотр одной новости';
         
