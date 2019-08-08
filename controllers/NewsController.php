@@ -1,19 +1,19 @@
 <?php
 
-include_once ROOT. '/models/News.php';
+// include_once ROOT. '/models/News.php';
 
 class NewsController
 {
     public function actionIndex()
     {
-        $newsList = array();
-        $newsList = News::getNewsList();
+        // $newsList = array();
+        // $newsList = News::getNewsList();
         
-        echo '<pre>';
-        print_r($newsList);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($newsList);
+        // echo '</pre>';
         
-        return true;
+        // return true;
     }
     
     public function actionView($category,$id)
