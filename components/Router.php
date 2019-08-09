@@ -85,7 +85,7 @@ class Router {
 
                 //Создать объект класса контроллера, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName; // вместо имени класса подставляем переменную $controllerName, которая содержит строку с именем этого класса
-                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);// функция вызывает вызывает action с именем, содержащимся в $actionName у объекта $controllerObject
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);// функция вызывает action с именем, содержащимся в $actionName у объекта $controllerObject
 
                 if ($result != null){
                     break;

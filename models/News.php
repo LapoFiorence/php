@@ -12,7 +12,7 @@ class News
         $dbname = 'mvc_site';
         $user = 'root';
         $password = '';
-        $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);// при помощи объекта $db происходит общение с БД
+        $db = new mysqli("mysql:host=$host;dbname=$dbname", $user, $password);// при помощи объекта $db происходит общение с БД
         
         $newsList = array();
         
