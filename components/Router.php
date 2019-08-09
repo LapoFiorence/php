@@ -5,7 +5,12 @@ class Router {
     public function __construct()
     {
         $routesPath= ROOT.'/config/routes.php'; // указываем путь к роутам
+<<<<<<< HEAD
+        $this->routes = include($routesPath); // присваиваем свойству routes массив
+        echo $routesPath;
+=======
         $this->routes = include($routesPath); // присваиваем свойству routes массив, который хранится в файле routes.php
+>>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
     }
     
     private function getURI()//метод возвращает строку
@@ -24,7 +29,7 @@ class Router {
         
         // Проверить наличие такого запроса в routes.php
         foreach ($this->routes as $uriPattern => $path){// для каждого маршрута, находящегося в массиве помещаем в переменную $uriPattern строку запроса из routes.php, а в переменную $path мы помещаем путь 'news/index'
-//            echo "<br>$uriPattern -> $path"; //обязательны двойные кавычки
+           echo "<br>$uriPattern -> $path"; //обязательны двойные кавычки
 //            
             // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)){
@@ -48,7 +53,7 @@ class Router {
                 $controllerName = array_shift($segments).'Controller'; // получение имени контроллера, функция array_shift получает значение первого элемента в массиве и удаляет его из массива
 //                echo $controllerName;
                 $controllerName = ucfirst($controllerName);
-//                echo $controllerName;
+                echo $controllerName;
                 
                 $actionName = 'action'.ucfirst(array_shift($segments));
                 
@@ -62,15 +67,26 @@ class Router {
                 die;
                 
                 //Подключить файл класса-контроллера
+<<<<<<< HEAD
+                $controllerFile = ROOT . '/controller/' .// перенос
+                $controllerName . '.php';
+=======
                 $controllerFile = ROOT . '/controllers/' . $controllerName . '.php'; 
+>>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
                 
                 if (file_exists($controllerFile)){
                     include_once ($controllerFile);
                 }
                 
+<<<<<<< HEAD
+                // Создать объект, вызвать метод (т.е. action)
+                $controllerObject = new $controllerName;
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+=======
                 //Создать объект класса контроллера, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName; // вместо имени класса подставляем переменную $controllerName, которая содержит строку с именем этого класса
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);// функция вызывает вызывает action с именем, содержащимся в $actionName у объекта $controllerObject
+>>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
                 if ($result != null){
                     break;
                 }
