@@ -5,12 +5,12 @@ class Router {
     public function __construct()
     {
         $routesPath= ROOT.'/config/routes.php'; // указываем путь к роутам
-<<<<<<< HEAD
+
         $this->routes = include($routesPath); // присваиваем свойству routes массив
         echo $routesPath;
-=======
+
         $this->routes = include($routesPath); // присваиваем свойству routes массив, который хранится в файле routes.php
->>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
+
     }
     
     private function getURI()//метод возвращает строку
@@ -67,26 +67,26 @@ class Router {
                 die;
                 
                 //Подключить файл класса-контроллера
-<<<<<<< HEAD
+
                 $controllerFile = ROOT . '/controller/' .// перенос
                 $controllerName . '.php';
-=======
+
                 $controllerFile = ROOT . '/controllers/' . $controllerName . '.php'; 
->>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
+
                 
                 if (file_exists($controllerFile)){
                     include_once ($controllerFile);
                 }
                 
-<<<<<<< HEAD
+
                 // Создать объект, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName;
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
-=======
+
                 //Создать объект класса контроллера, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName; // вместо имени класса подставляем переменную $controllerName, которая содержит строку с именем этого класса
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);// функция вызывает вызывает action с именем, содержащимся в $actionName у объекта $controllerObject
->>>>>>> 4cdef4e7109179c44e4bbbdfc6cfd18ec2ab6a36
+
                 if ($result != null){
                     break;
                 }
