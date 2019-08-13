@@ -12,13 +12,15 @@ class NewsController
 
         $newsList = array();
         $newsList = News::getNewsList(); // статический метод
+        
+        require_once (ROOT.'/views/news/index.php');
 
         
         // echo '<pre>';
         // print_r($newsList);
         // echo '</pre>';
         
-        // return true;
+         return true;
     }
     
     public function actionView($category, $id)

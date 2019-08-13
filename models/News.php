@@ -3,16 +3,31 @@ class News
 {
     public static function getNewsItemById($id)// возвращает одну новость по id
     {
-        //Запрос к БД
+        $id = intval($id);
+        
+        if ($id) {
+//            $host = 'localhost';
+//            $dbname = 'mvc_site';
+//            $user = 'root';
+//            $password = '';
+//            $db = new mysqli("mysql:host=$host;dbname=$dbname", $user, $password);
+            
+            $db = Db::getConnection();
+            
+            $result = $db->query('SELECT * from news WHERE id=' . $id);
+            
+//            $result->setFetchMode(PDO::FETCH_NUM);
+//            $result->setFetchMode(PDO::FETCH_ASSOC);
+            
+            $newsItem = $result->fetch(); // fetch возвращает массив в котором содержатся все элементы
+            
+            return $newsItem;
+        }
     }
     
     public static function getNewsList()// получение данных из БД
     {
-        $host = 'localhost';
-        $dbname = 'mvc_site';
-        $user = 'root';
-        $password = '';
-        $db = new mysqli("mysql:host=$host;dbname=$dbname", $user, $password);// при помощи объекта $db происходит общение с БД
+        $db = Db::getConnection();
         
         $newsList = array();
         
