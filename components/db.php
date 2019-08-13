@@ -2,10 +2,10 @@
 
 class Db
 {
-    public static function getConnection()
+    public static function getConnection()// статический метод
     {
         $paramsPath = ROOT . '/config/db_params.php';
-        $params = include($paramsPath);
+        $params = include($paramsPath); // получаем параметры соединения
         
         
         $dsn = "mysql:host={$params['host']}; dbname={$params['dbname']}";
