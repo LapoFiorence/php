@@ -6,11 +6,14 @@
 ini_set('display_errors', 1);// отображение ошибок
 error_reporting(E_ALL);
 
+session_start();
+
 // 2. Подключение файлов системы(каркаса)
 define('ROOT', dirname(__FILE__));//dirname(__FILE__)-путь к файлу на диске(функция dirname, псевдоконстанта __FILE__ )
 //echo print_r('ROOT');
-require_once (ROOT.'/components/Router.php');
-require_once (ROOT.'/components/Db.php');
+require_once (ROOT.'/components/autoload.php');
+
+//require_once (ROOT.'/components/Db.php');
 
 
 // 3. Установка соединения с БД
