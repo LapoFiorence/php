@@ -8,7 +8,7 @@ class Router {
 
         $this->routes = include($routesPath); // присваиваем свойству routes массив
 
-        $this->routes = include($routesPath); // присваиваем свойству routes массив, который хранится в файле routes.php
+//        $this->routes = include($routesPath); // присваиваем свойству routes массив, который хранится в файле routes.php
 
     }
 
@@ -48,7 +48,7 @@ class Router {
 //                echo '</pre>';
 
                 $controllerName = array_shift($segments).'Controller'; // получение имени контроллера, функция array_shift получает значение первого элемента в массиве и удаляет его из массива
-//                echo $controllerName;
+                echo $controllerName;
                 $controllerName = ucfirst($controllerName);
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
