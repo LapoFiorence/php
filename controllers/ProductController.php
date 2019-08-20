@@ -8,7 +8,7 @@ class ProductController
      * @param integer $productId <p>id товара</p>
      */
     
-    public function actionView($productId)
+    public function actionView($segments)
     {
         require_once(ROOT . '/views/product/view.php');
         
