@@ -7,41 +7,17 @@
                 <div class="left-sidebar">
                     <h2>Каталог</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
+                        <?php foreach ($categories as $categoryItem): ?>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a href="/category/<?php echo $categoryItem['id'];?>">
+                                            <?php echo $categoryItem['name'];?>
+                                        </a>
+                                    </h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Категория</a></h4>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div><!--/category-products-->
                 </div>
             </div>
@@ -130,7 +106,7 @@
 
                     <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="item active">	
+                            <div class="item active">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
@@ -169,7 +145,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">	
+                            <div class="item">
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
@@ -214,7 +190,7 @@
                         </a>
                         <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
                             <i class="fa fa-angle-right"></i>
-                        </a>			
+                        </a>
                     </div>
                 </div><!--/recommended_items-->
 
