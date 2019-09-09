@@ -2,7 +2,7 @@
 
 class Product
 {
-    const SHOW_BY_DEFAULT = 10;
+    const SHOW_BY_DEFAULT = 3;
     
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
     {
@@ -12,7 +12,8 @@ class Product
         
         $productsList = array();
         
-        $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = 1');
+        $result = $db->query('SELECT id, name, price, image, is_new FROM product WHERE status = 1 ORDER BY id DESC');
+//                
         
         $i = 0;
         while ($row = $result->fetch()){
