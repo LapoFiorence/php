@@ -9,22 +9,26 @@ class CatalogController
     {
         $categories = array();
         $categories = Category::getCategoriesList();
-        
+
         $latestProducts = array();
         $latestProducts = Product::getLatestProducts(12);
-        
+
         require_once(ROOT . '/views/catalog/index.php');
-        
+
         return true;
     }
-    
+
     public function actionCategory($categoryId)
     {
         $categories = array();
-        $categories = Category::getProductsListByCategory($categoryId);
-        
+        $categories = Category::getCategoriesList();
+        $cat_current = $categoryId;
+
+        $products = array();
+        $products = Category::getProductsListByCategory($categoryId);
+
         require_once (ROOT . '/views/catalog/category.php');
-        
+
         return true;
     }
 }
