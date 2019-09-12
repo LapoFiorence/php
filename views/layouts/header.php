@@ -16,7 +16,7 @@
         <!--[if lt IE 9]>
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
-        <![endif]-->       
+        <![endif]-->
         <link rel="shortcut icon" href="/template/images/ico/favicon.ico">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/template/images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/template/images/ico/apple-touch-icon-114-precomposed.png">
@@ -54,12 +54,12 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="logo pull-left">
-                                <a href="index.html"><img src="/template/images/home/logo.png" alt="" /></a>
+                                <a href="/"><img src="/template/images/home/logo.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
-                                <ul class="nav navbar-nav">                                    
+                                <ul class="nav navbar-nav">
                                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
                                     <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
                                     <li><a href="#"><i class="fa fa-lock"></i> Вход</a></li>
@@ -84,14 +84,14 @@
                             </div>
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="#">Главная</a></li>
+                                    <li><a href="/">Главная</a></li>
                                     <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                         <ul role="menu" class="sub-menu">
                                             <li><a href="#">Каталог товаров</a></li>
-                                            <li><a href="#">Корзина</a></li> 
+                                            <li><a href="#">Корзина</a></li>
                                         </ul>
-                                    </li> 
-                                    <li><a href="#">Блог</a></li> 
+                                    </li>
+                                    <li><a href="#">Блог</a></li>
                                     <li><a href="#">О магазине</a></li>
                                     <li><a href="#">Контакты</a></li>
                                 </ul>
@@ -100,5 +100,5 @@
                     </div>
                 </div>
             </div><!--/header-bottom-->
-            
+
         </header><!--/header-->
