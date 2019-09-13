@@ -13,7 +13,6 @@ class Product
         $productsList = array();
 
         $result = $db->query("SELECT id, name, price, is_new FROM product WHERE status = 1 ORDER BY id DESC LIMIT " . $count);
-//
 
         $i = 0;
         while ($row = $result->fetch()){

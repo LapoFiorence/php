@@ -6,19 +6,11 @@ class News
         $id = intval($id);
         
         if ($id) {
-//            $host = 'localhost';
-//            $dbname = 'mvc_site';
-//            $user = 'root';
-//            $password = '';
-//            $db = new mysqli("mysql:host=$host;dbname=$dbname", $user, $password);
-            
+                        
             $db = Db::getConnection();
             
-            $result = $db->query('SELECT * from news WHERE id=' . $id);
-            
-//            $result->setFetchMode(PDO::FETCH_NUM);
-//            $result->setFetchMode(PDO::FETCH_ASSOC);
-            
+            $result = $db->query('SELECT * from news WHERE id=' . $id);          
+           
             $newsItem = $result->fetch(); // fetch возвращает массив в котором содержатся все элементы
             
             return $newsItem;

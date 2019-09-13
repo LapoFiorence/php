@@ -17,20 +17,7 @@ class Category
             $i++;
         }
         return $categoryList;
-
-//        $con = mysqli_connect("localhost", "root", "root", "super_mag");
-//        if (mysqli_connect_errno()){
-//            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-//        }
-//
-//        $result = mysqli_query($con, 'SELECT `id`, `name` * FROM `category` WHERE status = `1` ORDER BY `sort_order`, name ASC');
-//
-//        $i = 0;
-//        while ($row = mysqli_fetch_array($result)){
-//            $categoryList[$i]['id'] = $row['id'];
-//            $categoryList[$i]['name'] = $row['name'];
-//            $i++;
-//        }
+   
     }
 
     public static function getProductsListByCategory($categoryId = false)
@@ -38,7 +25,7 @@ class Category
         if ($categoryId) {
             $db = Db::getConnection();
             $products = array();
-            $result = $db->query("SELECT id, name, price, is_new FROM product WHERE status = 1 AND category_id = '$categoryId' ORDER BY id DESC");
+            $result = $db->query("SELECT id, name, price, is_new FROM product WHERE status = 1 AND category_id = '$categoryId' ORDER BY id DESC ");
 //                    . "WHERE status = 1 AND category_id = '$categoryId'"
 //                    . "ORDER BY id DESC");
 //                    . "LIMIT".self::SHOW_BY_DEFAULT);
