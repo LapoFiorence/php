@@ -20,12 +20,16 @@ class Category
    
     }
 
-    public static function getProductsListByCategory($categoryId = false)
+    public static function getProductsListByCategory($categoryId = false, $page = 1)
     {
         if ($categoryId) {
+            
+            $page = intval($page);
+            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+            
             $db = Db::getConnection();
             $products = array();
-            $result = $db->query("SELECT id, name, price, is_new FROM product WHERE status = 1 AND category_id = '$categoryId' ORDER BY id DESC ");
+            $result = $db->query("SELECT id, name, price, is_new FROM product WHERE status = 1 AND category_id = '$categoryId' ORDER BY id DESC LIMIT". self::SHOW_BY_DEFAULT 'OFSET'. $offset);
 //                    . "WHERE status = 1 AND category_id = '$categoryId'"
 //                    . "ORDER BY id DESC");
 //                    . "LIMIT".self::SHOW_BY_DEFAULT);
