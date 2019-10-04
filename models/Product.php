@@ -40,5 +40,45 @@ class Product
             return $result->fetch();
         }
     }
+     public static function getProductsListByCategory($categoryId = false, $page = 1)
+    {
+        if ($categoryId) {
+            
+//            $limit = Product::SHOW_BY_DEFAULT;
+            
+            $page = intval($page);
+            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+            
+            $db = Db::getConnection();
+            $products = array();
+            $result = $db->query(" SELECT id, name, price, is_new FROM product "
+                        . " WHERE status = 1 AND category_id = '$categoryId' " 
+                        . " ORDER BY id ASC "
+                        . " LIMIT ". self::SHOW_BY_DEFAULT 
+                        . ' OFSET '. $offset);
+//                    . "WHERE status = 1 AND category_id = '$categoryId'"
+//                    . "ORDER BY id DESC");
+//                    . "LIMIT".self::SHOW_BY_DEFAULT);
+            
+//            $result = $db->prepare($sql);
+//            $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+//            $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+//            $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+//            
+//            $result->execute();
+
+            $i = 0;
+//            $products = array();
+            while ($row = $result->fetch()) {
+                $products[$i]['id'] = $row['id'];
+                $products[$i]['name'] = $row['name'];
+                $products[$i]['price'] = $row['price'];
+                $products[$i]['is_new'] = $row['is_new'];
+                $i++;
+            }
+
+            return $products;
+        }
+    }
 
 }

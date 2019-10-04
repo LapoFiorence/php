@@ -28,7 +28,7 @@ class CatalogController
         $cat_current = $categoryId;
 
         $products = array();
-        $products = Category::getProductsListByCategory($categoryId, $page);
+        $products = Product::getProductsListByCategory($categoryId, $page);
 
         require_once (ROOT . '/views/catalog/category.php');
 
