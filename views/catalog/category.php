@@ -26,7 +26,7 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Последние товары</h2>
 
-                    <?php foreach ($products as $product): ?>
+                    <?php foreach ($categoryProducts as $product): ?>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
@@ -35,7 +35,7 @@
                                         <h2><?php echo $product['price'];?>$</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['id'];?>">
-                                                <?php echo $product['name'];?>
+                                                ID:<?php echo $product['id'];?>, <?php echo $product['name'];?>
                                         </p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
