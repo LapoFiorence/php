@@ -35,6 +35,11 @@ class UserController
             
             if ($errors == false) {
                 $result = User::register($name, $email, $password);
+                if ($result == true){
+                    echo "Информация занесена в базу данных";
+                }else{
+                    echo "Информация не занесена в базу данных";
+                }
             }
         }
         require_once(ROOT . '/views/user/register.php');
