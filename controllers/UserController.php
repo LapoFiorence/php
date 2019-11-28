@@ -4,10 +4,11 @@ class UserController
 {
     public function actionRegister() 
     {
-        $name = '';
-        $email = '';
-        $password = '';
+        $name = false;
+        $email = false;
+        $password = false;
         $result = false;
+        
         
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
@@ -34,6 +35,11 @@ class UserController
             
             if ($errors == false) {
                 $result = User::register($name, $email, $password);
+                if ($result == true){
+                    echo "Информация занесена в базу данных";
+                }else{
+                    echo "Информация не занесена в базу данных";
+                }
             }
         }
         require_once(ROOT . '/views/user/register.php');

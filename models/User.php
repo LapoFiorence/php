@@ -5,7 +5,7 @@ class User
     public static function register($name, $email, $password){
         
         $db = Db::getConnection();
-        
+                
         $sql = 'INSERT INTO user (name, email, password)'
                 . 'VALUES (:name, :email, :password)';
         
@@ -15,6 +15,7 @@ class User
         $result->bindParam(':password', $password, PDO::PARAM_STR);
         
         return $result->execute();
+                
     }
     
     public static function checkName($name){
