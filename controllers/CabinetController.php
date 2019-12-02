@@ -10,5 +10,6 @@ class CabinetController
         
         return true;
     }
+    
 }
 
