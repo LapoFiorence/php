@@ -6,6 +6,8 @@ return array(
     
     'category/([0-9]+)/page-([0-9]+)' => 'catalog/category/$1/$2',
     'category/([0-9]+)' => 'catalog/category/$1', // actionCategory в CatalogController
+    
+    'user/register' => 'user/register',
 
     '' => 'site/index', // actionIndex в SiteController
     'index.php' =>'site/index',
