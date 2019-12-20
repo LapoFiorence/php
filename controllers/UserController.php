@@ -4,9 +4,9 @@ class UserController
 {
     public function actionRegister() 
     {
-        $name = false;
-        $email = false;
-        $password = false;
+        $name = '';
+        $email = '';
+        $password = '';
         $result = false;
         
         
@@ -29,7 +29,7 @@ class UserController
                 $errors[] = 'Пароль не должно быть короче 6-ти символов';
             }
             
-            if (User::checkEmailExists($email)) {
+            if (!User::checkEmailExists($email)) {
                 $errors[] = 'Такой email уже существует';
             }
             
