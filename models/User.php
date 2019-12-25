@@ -74,13 +74,15 @@ class User
     
     // Запоминаем пользователя
     public static function auth($userId)
-    {        
+    {    
+        session_start();
         $_SESSION['user'] = $userId;
     }
     
     public static function checkLogged()
     {        
         //если сессия есть, вернем идентификатор пользователя
+        session_start();
         if (isset($_SESSION['user'])){
             return $_SESSION['user'];
         }
@@ -89,7 +91,8 @@ class User
     }
     
     public static function isGuest()
-    {        
+    {       
+        session_start();
         if (isset($_SESSION['user'])) {
             return false;
         }
@@ -112,4 +115,23 @@ class User
             return $result->fetch();
         }
     }
+    
+    public static function edit($id, $name, $password)
+    {
+        $db = Db::getConnection();
+        
+        $sql = "UPDATE user
+                SET name = :name, password = :password
+                WHERE id = :id";
+        
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_INT);
+        $result->bindParam(':password', $password, PDO::PARAM_INT);
+        return $result->execute();
+                
+    }
+
+            
+            
 }

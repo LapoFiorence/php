@@ -19,7 +19,7 @@ require_once(ROOT.'/components/Router.php');
 
 require_once (ROOT.'/components/autoload.php');
 
-require_once (ROOT.'/components/Db.php');
+require_once (ROOT.'/components/db.php');
 
 
 // 3. Установка соединения с БД
