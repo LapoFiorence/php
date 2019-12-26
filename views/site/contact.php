@@ -5,9 +5,9 @@
         <div class="row">
 
             <div class="col-sm-4 col-sm-offset-4 padding-right">
-                
+
                 <?php if ($result): ?>
-                    <p>Данные отредактированы!</p>
+                    <p>Сообщение отправлено! Мы ответим Вам на указанный email.</p>
                 <?php else: ?>
                     <?php if (isset($errors) && is_array($errors)): ?>
                         <ul>
@@ -18,19 +18,21 @@
                     <?php endif; ?>
 
                     <div class="signup-form"><!--sign up form-->
-                        <h2>Редактирование данных</h2>
+                        <h2>Обратная связь</h2>
+                        <h5>Есть вопрос? Напишите нам</h5>
+                        <br/>
                         <form action="#" method="post">
-                            <p>Имя:</p>
-                            <input type="text" name="name" placeholder="Имя" value="<?php echo $name; ?>"/>
-                            
-                            <p>Пароль:</p>
-                            <input type="password" name="password" placeholder="Пароль" value="<?php echo $password; ?>"/>
+                            <p>Ваша почта</p>
+                            <input type="email" name="userEmail" placeholder="E-mail" value="<?php echo $userEmail; ?>"/>
+                            <p>Сообщение</p>
+                            <input type="text" name="userText" placeholder="Сообщение" value="<?php echo $userText; ?>"/>
                             <br/>
-                            <input type="submit" name="submit" class="btn btn-default" value="Сохранить" />
+                            <input type="submit" name="submit" class="btn btn-default" value="Отправить" />
                         </form>
                     </div><!--/sign up form-->
-                
                 <?php endif; ?>
+
+
                 <br/>
                 <br/>
             </div>
