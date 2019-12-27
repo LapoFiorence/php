@@ -40,6 +40,53 @@ class Cart
             return 0;
         }
     }
-            
+    
+    public static function getProducts()
+    {
+        if (isset($_SESSION['products'])){
+            return $_SESSION['products'];
+        }
+        return false;
+    }
+    
+    public static function getTotalPrice($products)
+    {
+        $productsInCart = self::getProducts();
+        
+        $total = 0;
+        
+        if ($productsInCart) {
+            foreach ($products as $item) {
+                $total += $item['price'] * $productsInCart[$item['id']];
+            }
+        }
+        return $total;
+    }
+    
+     /**
+     * Очищает корзину
+     */
+    public static function clear()
+    {
+        if (isset($_SESSION['products'])) {
+            unset($_SESSION['products']);
+        }
+    }
+    
+      /**
+     * Удаляет товар с указанным id из корзины
+     * @param integer $id <p>id товара</p>
+     */
+    public static function deleteProduct($id)
+    {
+        // Получаем массив с идентификаторами и количеством товаров в корзине
+        $productsInCart = self::getProducts();
+        // Удаляем из массива элемент с указанным id
+        unset($productsInCart[$id]);
+        // Записываем массив товаров с удаленным элементом в сессию
+        $_SESSION['products'] = $productsInCart;
+    }
+
+    
 }
 

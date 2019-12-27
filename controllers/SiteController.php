@@ -42,7 +42,13 @@ class SiteController
                 $result = mail($adminEmail, $subject, $message);
                 $result = true;
             }
+            
+           
         }
+        
+        require_once(ROOT . '/views/site/contact.php');
+            
+        return true;
         
         
         $mail = 'dolgova_v@mail.ru';
@@ -53,5 +59,7 @@ class SiteController
         var_dump($result);
         
         die;
+        
+     
     }
 }
